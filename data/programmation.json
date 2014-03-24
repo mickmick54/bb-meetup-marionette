@@ -10,7 +10,7 @@
     },
     {
         "id" : 2,
-        "titre" : "Guignol, Petit Prince",
+        "titre" : "Guignol, a des vues sur le modèle",
         "date" : "26 mars, 16:30 – 17:30",
         "description" : "<p>Spectacle de Guignol - dès 3 ans</p><p>Guignol se doit de faire découvrir ce qu’était « Le Petit Prince » à sa fille Louison.</p><p>Mais à y mettre un pied il se pourrait fort bien que l’histoire les dépasse.</p><p>Quand l'histoire prend vit, même les petites filles qui pensait que St-Exupéry n'était qu'un aéroport, se font entraîné la poésie d'une oeuvre plus profonde qu'elle n'y paraît.</p><p>Une fresque pour enfants qui parle aux adultes.</p>",
         "auteur" : "Vick King",
@@ -19,7 +19,7 @@
     },
     {
         "id" : 3,
-        "titre" : "Cyrano-Guignol de Bergerac",
+        "titre" : "Guignol un mari honnête",
         "date" : "27 mars, 16:30 – 17:30",
         "description" : "<p>Attention, dans ce classique revisité, Guignol n’a pas de nez, mais gare à qui ose lui en parler ! Spectacle inspiré des guignolades de la fin du XIXè.</p>",
         "auteur" : "Vladimir Pudding",
@@ -28,7 +28,7 @@
     },
     {
         "id" : 4,
-        "titre" : "Oui oui et le flan magique",
+        "titre" : "Régions, lait et yaourts",
         "date" : "30 mars, 16:30 – 17:30",
         "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>",
         "auteur" : "Amanda Tapping",
@@ -46,7 +46,7 @@
     },
     {
         "id" : 6,
-        "titre" : "Santons et Pantins",
+        "titre" : "Qui tire les ficelles ?",
         "date" : "10 avril, 16:30 – 17:30",
         "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>",
         "auteur" : "Natalia Poklonskaya",
