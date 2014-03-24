@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="libs/jquery-1.11.0.min.js"></script>
+    <script src="libs/lodash.js"></script>
+    <script src="libs/backbone-min.js"></script>
+    <script src="libs/backbone.marionette.js"></script>
+    <link rel="stylesheet" href="style/style.css" />
+    <title>Théâtre de Guignol</title>
+
+    <script type="text/template" id="spectacle-template">
+        <td><a href="#detail/<%= id %>"><%= titre %></a></td>
+        <td><%= date %></td>
+        <td><%= auteur %></td>
+        <td><%= duree %></td>
+        <td><%= tarif %></td>
+    </script>
+    <script type="text/template" id="programme-template">
+        <table>
+            <thead>
+            <tr> <th>Titre</th> <th>Date</th> <th>Auteur</th><th>Duree</th><th>Tarif</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </script>
+    <script type="text/template" id="spectacle-detail-template">
+        <p><a href="#" class="close">&lt; home</a></p>
+        <h2><%= titre %></h2>
+        <p><span class="date"><%= date %></span> - <span class="duree"><%= duree %></span></p>
+        <p><%= description %></p>
+        <p><span class="auteur">Par <%= auteur %></span> - <span class="tarif">Tarif : <%= tarif %></span></p>
+    </script>
+
+    <script type="text/template" id="spectacle-detail-template2">
+        <p><a href="#" class="close">&lt; home</a></p>
+        <h2><%= titre %></h2>
+        <p><%= description %></p>
+        <p><span class="date"><%= date %></span> - <span class="duree"><%= duree %></span></p>
+        <p><span class="auteur">Par <%= auteur %></span> - <span class="tarif">Tarif : <%= tarif %></span></p>
+        <h2><%= message() %></h2>
+    </script>
+
+    <script>
+        var Spectacle = Backbone.Model.extend({
+            idAttribute : "id"
+        });
+
+        var Programme = Backbone.Collection.extend({
+            url: 'data/programmation.json',
+            model: Spectacle
+        });
+
+        var SpectacleView = Backbone.Marionette.ItemView.extend({
+            template: '#spectacle-template',
+            tagName : 'tr',
+            modelEvents : {
+                'change' : 'render'
+            }
+        });
+
+        var ProgrammeView = Backbone.Marionette.CompositeView.extend({
+            template: '#programme-template',
+            itemView : SpectacleView,
+            itemViewContainer : 'tbody',
+            modelEvents : {
+                'sync' : 'render'
+            }
+        });
+
+        var SpectacleDetailView = Backbone.Marionette.ItemView.extend({
+            tagName : 'div',
+            ui : {
+                'auteur' : '.auteur'
+            },
+            events : {
+                'click .close' : 'closing'
+            },
+            modelEvents : {
+                'change:titre': 'render'
+            },
+            templateHelpers: {
+                message: function(){
+                    return "Eh bien là c'est le template numéro 2 qui utilise des templates helpers!"
+                }
+
+            },
+
+            getTemplate: function() {
+                if (this.model.get("auteur") === "Natalia Poklonskaya"){
+                    return "#spectacle-detail-template2";
+                } else {
+                    return "#spectacle-detail-template";
+                }
+            },
+
+            onShow: function () {
+                console.log("onShow");
+            },
+            onBeforeRender: function () {
+                console.log("onBeforeRender");
+            },
+            onRender: function () {
+                console.log("onRender");
+            },
+            onBeforeClose: function () {
+                console.log("onBeforeClose");
+            },
+            onClose: function () {
+                console.log("onClose");
+            },
+            closing : function () {
+                console.log("closing");
+                console.log("Text de l'élément auteur : " + this.ui.auteur.text());
+                this.close();
+            }
+        });
+
+
+        var TheatreRouter = Backbone.Router.extend({
+            routes: {
+                "":            "home",
+                "detail/:id":  "detail"
+            },
+
+            home : function() {
+                var programmeView = new ProgrammeView({  collection: programme });
+                theatreApplication.mainRegion.show(programmeView);
+            },
+
+            detail: function(id) {
+                var spectacle = programme.get(id);
+
+                // Ajout dans window
+                window.spectacle = spectacle;
+
+
+                var spectacleDetailView = new SpectacleDetailView({ model: spectacle });
+                theatreApplication.mainRegion.show(spectacleDetailView);
+            }
+        });
+
+        var programme = new Programme();
+        var theatreApplication = new Backbone.Marionette.Application();
+
+        theatreApplication.addInitializer(function () {
+            theatreApplication.addRegions({
+                mainRegion: "#content"
+            });
+            programme.fetch({
+                success : function () {
+                    new TheatreRouter();
+                    Backbone.history.start();
+                }
+            });
+        });
+
+        window.addEventListener('load', function () {
+            theatreApplication.start();
+        });
+    </script>
+</head>
+<body>
+<div id="main">
+    <h1 class="marionette">Théatre Marionette</h1>
+
+    <div id="content"></div>
+</div>
+</body>
+</html>

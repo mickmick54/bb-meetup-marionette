@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="libs/jquery-1.11.0.min.js"></script>
+    <script src="libs/lodash.js"></script>
+    <script src="libs/backbone-min.js"></script>
+    <link rel="stylesheet" href="style/style.css"/>
+    <title>Théâtre de Guignol</title>
+
+    <script type="text/template" id="spectacle-template">
+        <td><a href="#detail/<%= id %>"><%= titre %></a></td>
+        <td><%= date %></td>
+        <td><%= auteur %></td>
+        <td><%= duree %></td>
+        <td><%= tarif %></td>
+    </script>
+    <script type="text/template" id="programme-template">
+        <table>
+            <thead>
+                <tr> <th>Titre</th> <th>Date</th> <th>Auteur</th><th>Duree</th><th>Tarif</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </script>
+    <script type="text/template" id="spectacle-detail-template">
+        <p><a href="#">&lt; home</a></p>
+        <h2><%= titre %></h2>
+        <p><span class="date"><%= date %></span> - <span class="duree"><%= duree %></span></p>
+        <p><%= description %></p>
+        <p><span class="auteur">Par <%= auteur %></span> - <span class="tarif">Tarif : <%= tarif %></span></p>
+    </script>
+
+    <script>
+        var Spectacle = Backbone.Model.extend({
+            idAttribute : "id"
+        });
+
+        var Programme = Backbone.Collection.extend({
+            url: 'data/programmation.json',
+            model: Spectacle
+        });
+
+        // Ligne du tableau des spectacles
+        var SpectacleView = Backbone.View.extend({
+            template: _.template($('#spectacle-template').html()),
+            tagName : 'tr',
+            initialize: function (options) {
+                this.model = options.model;
+                this.listenTo(this.model, 'change', this.render);
+            },
+            destroy: function () {
+                delete this.model;
+            },
+            render: function () {
+                this.$el.html(this.template(this.model.toJSON()));
+                return this;
+            }
+        });
+
+        // Tableau des spectacles
+        var ProgrammeView = Backbone.View.extend({
+            template: _.template($('#programme-template').html()),
+            initialize: function (options) {
+                this.collection = options.collection;
+                this.listenTo(this.collection, 'sync', this.render);
+            },
+            destroy: function () {
+                delete this.collection;
+            },
+            render: function () {
+                this.$el.html(this.template());
+                this.collection.each(function (model) {
+                    var spectacleView = new SpectacleView({ model: model });
+                    this.$('tbody').append(spectacleView.render().$el);
+                }, this);
+                return this;
+            }
+        });
+
+
+        // Vue pour la page de détail
+        var SpectacleDetailView = Backbone.View.extend({
+            template: _.template($('#spectacle-detail-template').html()),
+            tagName : 'div',
+            initialize: function (options) {
+                this.model = options.model;
+                this.listenTo(this.model, 'change', this.render);
+            },
+            destroy: function () {
+                delete this.model;
+            },
+            render: function () {
+                this.$el.html(this.template(this.model.toJSON()));
+                return this;
+            }
+        });
+
+        var TheatreRouter = Backbone.Router.extend({
+            routes: {
+                "":            "home",
+                "detail/:id":  "detail"
+            },
+
+            home : function() {
+                var programmeView = new ProgrammeView({ el : '#content', collection: programme });
+                programmeView.render();
+            },
+
+            detail: function(id) {
+                var spectacle = programme.get(id);
+                var spectacleDetailView = new SpectacleDetailView({ el : '#content', model: spectacle });
+                spectacleDetailView.render();
+            }
+        });
+
+        var programme = null;
+
+
+        window.addEventListener('load', function () {
+            programme = new Programme();
+            programme.fetch({
+                success : function () {
+                    var router = new TheatreRouter();
+                    Backbone.history.start();
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+<div id="main">
+
+    <h1 class="backbone">Théatre Backbone</h1>
+
+    <div id="content"></div>
+</div>
+</body>
+</html>

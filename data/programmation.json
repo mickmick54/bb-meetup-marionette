@@ -1,0 +1,60 @@
+[
+    {
+        "id" : 1,
+        "titre" : "Guignol et les anneaux de la licorne",
+        "date" : "23 mars, 10:30 – 11:30",
+        "description" : "<p>Spectacle de Guignol - dès 3 ans</p><p>A Lyon, La corporation des canuts se transmet depuis le Moyen-Âge Une très précieuse tapisserie : la tapisserie à la Licorne.</p><p>Avec le temps la légende est devenu un mythe. Mais les canuts attendent celui qui parmi eux sera l'élu qui libérera la licorne. Guignol, le plus célèbre des gones, traboule tranquillement dans les rues de Lyon sans se soucier de rien.</p><p>Une Quête qui le mènera aux limites du fantastique.</p>",
+        "auteur" : "Hugo Frais",
+        "duree" : "45mn",
+        "tarif" : "10,80€"
+    },
+    {
+        "id" : 2,
+        "titre" : "Guignol, Petit Prince",
+        "date" : "26 mars, 16:30 – 17:30",
+        "description" : "<p>Spectacle de Guignol - dès 3 ans</p><p>Guignol se doit de faire découvrir ce qu’était « Le Petit Prince » à sa fille Louison.</p><p>Mais à y mettre un pied il se pourrait fort bien que l’histoire les dépasse.</p><p>Quand l'histoire prend vit, même les petites filles qui pensait que St-Exupéry n'était qu'un aéroport, se font entraîné la poésie d'une oeuvre plus profonde qu'elle n'y paraît.</p><p>Une fresque pour enfants qui parle aux adultes.</p>",
+        "auteur" : "Vick King",
+        "duree" : "45mn",
+        "tarif" : "8,80€"
+    },
+    {
+        "id" : 3,
+        "titre" : "Cyrano-Guignol de Bergerac",
+        "date" : "27 mars, 16:30 – 17:30",
+        "description" : "<p>Attention, dans ce classique revisité, Guignol n’a pas de nez, mais gare à qui ose lui en parler ! Spectacle inspiré des guignolades de la fin du XIXè.</p>",
+        "auteur" : "Vladimir Pudding",
+        "duree" : "125min",
+        "tarif" : "200,20€"
+    },
+    {
+        "id" : 4,
+        "titre" : "Oui oui et le flan magique",
+        "date" : "30 mars, 16:30 – 17:30",
+        "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>",
+        "auteur" : "Amanda Tapping",
+        "duree" : "60min",
+        "tarif" : "10,40€"
+    },
+    {
+        "id" : 5,
+        "titre" : "Common show some backbone!",
+        "date" : "1 avril, 16:30 – 17:30",
+        "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>",
+        "auteur" : "Chuck Nourice",
+        "duree" : "10min",
+        "tarif" : "5€"
+    },
+    {
+        "id" : 6,
+        "titre" : "Santons et Pantins",
+        "date" : "10 avril, 16:30 – 17:30",
+        "description" : "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>",
+        "auteur" : "Natalia Poklonskaya",
+        "duree" : "25min",
+        "tarif" : "25,95€"
+    }
+
+
+
+
+]

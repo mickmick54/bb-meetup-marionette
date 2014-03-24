@@ -1,0 +1,55 @@
+body {
+    font-family: "Helvetica Neue", helvetica, sans-serif;
+    color: #1D3F58;
+    background: #FBFBFB;
+}
+
+
+h1, h2, h3, h4 {
+    color: #3FA7CC;
+    font-family: Georgia;
+}
+
+h1 {
+    font-size: 130%;
+    padding-left: 50px;
+    height: 40px;
+}
+
+h1.backbone {
+    background: url(../images/backbone.png) no-repeat;
+}
+
+
+h1.marionette {
+    background: url(../images/marionette.png) no-repeat;
+}
+
+h2 {
+    font-size: 110%;
+}
+
+#main {
+    margin:auto;
+    max-width: 50em;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 3px;
+}
+
+td, th {
+    border: 1px solid #18222E;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+a, a:visited {
+    color: #1D3F58;
+}
+
+.date, .duree, .auteur, .tarif {
+    font-size: smaller;
+    font-style: italic;
+}
+
